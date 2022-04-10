@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <title>Matchmaker with Destiny</title>
+</head>
+
+<!--
+    Destiny's Matchmaker for the Web
+    Sprint 6 -- MatchmakerWeb
+--> 
+
+<body>
+    <h1>❤️❤️❤️❤️❤️Matchmaker with Destiny❤️❤️❤️❤️❤️</h1>
+    <p>This program will allow you to answer 5 questions to determine our compatibility. </br></br>
+        You will answer each question on a scale from 1 to 5: </br></br>
+        5 - Strongly agree</br>
+        4 - Agree</br>
+        3 - Neither agree nor disagree</br>
+        2 - Disagree</br>
+        1 - Strongly disagree</br></br>
+        
+        Good luck! Don't mess this up!❤️</p>
+
+    <label>Dogs are better than cats.</label><br />
+    <select id="Statement 1">
+        <option value="5">Strongly Agree</option>    
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select> 
+    <br /><br />
+    <label>I hate to travel!</label><br />
+    <select id="Statement 2">
+        <option value="5">Strongly Agree</option>    
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select> 
+    <br /><br />
+    <label>Tomatoes are disgusting!</label><br />
+    <select id="Statement 3">
+        <option value="5">Strongly Agree</option>    
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select> 
+    <br /><br />
+    <label>Mashed potatoes are the best kind of potato.</label><br />
+    <select id="Statement 4">
+        <option value="5">Strongly Agree</option>    
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select> 
+    <br /><br />
+    <label>I hate Irish folk music.</label><br />
+    <select id="Statement 5">
+        <option value="5">Strongly Agree</option>    
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select> 
+    <br /><br /><br />
+
+    <button onclick="calculateCompatibility()">Calculate Compatibility</button>
+    <p id="compatibility"></p>
+
+<script> 
+console.log('Starting Matchmaker Lite...');
+function calculateCompatibility () {
+    console.log("calculateCompatibility");
+
+    const DESIRED_RESPONSE = [
+        5, /*Strongly agree*/
+        0, /*Strongly disagree*/
+        5, /*Strongly agree*/
+        5, /*Strongly agree*/
+        0, /*Strongly disagree*/
+    ];
+
+    const MAX_SCORE = 25;
+
+    let statement1Response = document.getElementById('Statement 1').selectedOptions[0].value;
+    let statement2Response = document.getElementById('Statement 2').selectedOptions[0].value;
+    let statement3Response = document.getElementById('Statement 3').selectedOptions[0].value;
+    let statement4Response = document.getElementById('Statement 4').selectedOptions[0].value;
+    let statement5Response = document.getElementById('Statement 5').selectedOptions[0].value;
+   
+    console.log('Statement 1 Answer:');
+    console.log(document.getElementById('Statement 1').selectedOptions[0].text);
+    console.log(document.getElementById('Statement 1').selectedOptions[0].value);
+    console.log(statement1Response);
+
+    console.log('Statement 2 Answer:');
+    console.log(document.getElementById('Statement 2').selectedOptions[0].text);
+    console.log(document.getElementById('Statement 2').selectedOptions[0].value);
+    console.log(statement2Response);
+
+    console.log('Statement 3 Answer:');
+    console.log(document.getElementById('Statement 3').selectedOptions[0].text);
+    console.log(document.getElementById('Statement 3').selectedOptions[0].value);
+    console.log(statement3Response);
+
+    console.log('Statement 4 Answer:');
+    console.log(document.getElementById('Statement 4').selectedOptions[0].text);
+    console.log(document.getElementById('Statement 4').selectedOptions[0].value);
+    console.log(statement4Response);
+
+    console.log('Statement 5 Answer:');
+    console.log(document.getElementById('Statement 5').selectedOptions[0].text);
+    console.log(document.getElementById('Statement 5').selectedOptions[0].value);
+    console.log(statement5Response);
+
+    let statement1Compatibility = 5 - Math.abs(statement1Response - DESIRED_RESPONSE[0]);
+    let statement2Compatibility = 5 - Math.abs(statement2Response - DESIRED_RESPONSE[1]);
+    let statement3Compatibility = 5 - Math.abs(statement3Response - DESIRED_RESPONSE[2]);
+    let statement4Compatibility = 5 - Math.abs(statement4Response - DESIRED_RESPONSE[3]);
+    let statement5Compatibility = 5 - Math.abs(statement5Response - DESIRED_RESPONSE[4]);
+
+    console.log("c1="+statement1Compatibility);
+    console.log("c2="+statement2Compatibility);
+    console.log("c3="+statement3Compatibility);
+    console.log("c4="+statement4Compatibility);
+    console.log("c5="+statement5Compatibility);
+
+    let totalCompatibility = statement1Compatibility + statement2Compatibility + statement3Compatibility + statement4Compatibility + statement5Compatibility;
+
+    totalCompatibility *=100 / MAX_SCORE;
+    totalCompatibility = Math.round(totalCompatibility);
+    console.log("Compatibility="+ totalCompatibility);
+
+    document.getElementById("compatibility").innerHTML = "Your compatibility is: " + totalCompatibility;
+}
+
+if (totalCompatibility >=90);
+    print("We're perfect for eachother!")
+
+elif (totalCompatibility >=60) + (totalCompatibility <=90);
+    print('Friends?')
+
+elif (totalCompatibility <=60); 
+    print('This was fun...but its a no from me dawg.')
+
+</script>
+</body>
+</html>
